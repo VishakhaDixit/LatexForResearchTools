@@ -1,0 +1,420 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+
+\begin{document}
+\title{Homework Assignment \#1 \\ ECGR 5100}
+\author{
+  Vishakha Dixit \\
+  (801265288) \\
+  \texttt{vdixit2@uncc.edu}
+}
+\date{Fall 2022}
+\maketitle
+
+\section*{Problems}
+\begin{enumerate}
+\item   Translate the following English passages into propositions
+        and logical connectors.
+        \begin{enumerate}
+        \item   {\sffamily ``You can see the movie only if you are
+                over 18 years old or you have permission of a parent.''}
+                Use $m$, $e$, and $p$ as the symbols.
+        \item   {\sffamily ``You can use Linux or you can upgrade your
+                Windows operating system.  However, to upgrade Windows
+                you need to have a 64-bit processor running at 1 GHz
+                or faster, and 16 GB of free hard disk space.''}
+        \end{enumerate}
+
+        \textbf{Soln-1 a.} Considering following prepositions, 
+        \begin{itemize}
+                \item   \textbf{m} = You can see the movie 
+                \item   \textbf{e} = You are over 18 years old
+                \item   \textbf{p} = you have permission of a parent. 
+        \end{itemize}
+        Prepositional logic for the above sentence can be written as follows using logical connectors: 
+        \begin{center}
+       $((e \vee p) \rightarrow m)$
+        \end{center}
+
+        \textbf{Soln-1 b.} Considering following prepositions, 
+        \begin{itemize}
+                \item   \textbf{L} = You can use Linux 
+                \item   \textbf{W} = You can upgrade window’s operation system
+                \item   \textbf{P} = You have 64-bit processor 
+                \item 	\textbf{G} = Your processor runs at 1 GHz or faster
+                \item 	\textbf{H} = You have 16 GB free hard disk space
+        \end{itemize}
+        Prepositional logic for the above sentence can be written as follows using logical connectors: 
+        \begin{center}
+       $((L \vee (W \leftrightarrow (P \wedge G \wedge H))))$
+        \end{center}
+
+\item   Are these system specifications consistent? \par
+        {\sffamily ``If the filesystem is not locked, then new messages
+        will be queued.  If the filesystem is not locked, then the
+        system is functioning normally, and conversely.  If new messages
+        are not queued, then they will be sent to the message buffer.
+        If the filesystem is not locked, then new messages will be sent
+        to the message buffer.  New messages will nto be sent to the
+        message buffer.''} \par
+        In other words, does this lead to a contradiction?
+
+
+        \textbf{Soln-2.} A system is considered consistent if assignment 
+                        of true value to the variable results in true expression. 
+                        For the given system above let’s consider following logical expression: 
+        \begin{itemize}
+                \item   \textbf{L} = Filesystems are locked.
+                \item   \textbf{Q} = New messages will be queued. 
+                \item   \textbf{N} = The system is functioning normally. 
+                \item 	\textbf{B} = New messages will be sent to message buffer.
+        \end{itemize}
+        The given specifications can be expressed as follows: 
+        \begin{itemize}
+                \item   If the file system is not locked, the new messages will be queued: $(\neg L \rightarrow Q)$
+                \item   If the file system is not locked, then the system is functioning normally and conversely: $(\neg L \rightarrow N)$
+                \item   If new messages are not queued, then they will be sent to the message buffer:  $(\neg  Q \rightarrow B)$
+                \item 	If the file system is not locked, then new messages will be sent to the message buffer: $(\neg L \rightarrow B)$
+                \item   New messages will not be sent to the message buffer: $(\neg B)$
+        \end{itemize}
+        To get consistency, then take N false in order that $(\neg N)$ be true. This require that both L and Q be true, 
+        by the two conditional statements that have N as their consequence. The first conditional statement $(\neg L \rightarrow Q)$ 
+        is of the form $(F \rightarrow T)$, which is true. Finally, the $(\neg L \rightarrow B)$ can be satisfied by taking B to be false.
+        Therefore, this set of specifications is consistent.
+
+\item   Show that $p \leftrightarrow q$ and
+        $(p \wedge q) \vee (\neg p \wedge \neg q)$ are logically equivalent
+        using algebra.  (Use the Theorems/Postulates in Rosen's textbook
+        or the ones listed in the notes from Harris \& Harris.)
+        
+        \textbf{Soln-3.}\par
+        L.H.S. = $p \leftrightarrow q$\par
+           = $(p \rightarrow q) \wedge (q \rightarrow p)$\par
+           = $(p \vee \neg q) \wedge (q \vee \neg p)$\par
+           = $((p \vee \neg q) \wedge q) \vee ((p \vee \neg q) \wedge \neg p)$\par
+           = $((p \wedge q) \vee (\neg q \wedge q)) \vee ((p \wedge \neg p) \vee (\neg q \wedge \neg p))$ [$ because $  $(\neg Q \wedge Q)$ = 0] \par		
+           = $(p \wedge q) \vee (\neg p \wedge \neg q)$\par
+        L.H.S. = R.H.S.\par
+        \begin{center}
+        Q.E.D
+        \end{center}
+        
+\item   Show that $(p \vee q) \wedge (\neg p \vee r) \rightarrow (q \vee r)$
+        is a tautology using algebra.
+
+        \textbf{Soln-4.} We know that $L \rightarrow Q  = \neg L \vee Q$ \par
+        L.H.S. = $\neg ((p \vee q) \wedge (\neg p \vee r)) \vee (q \vee r)$\par
+           = $\neg (p \vee q) \vee \neg (\neg p \vee r) \vee (q \vee r)$ \par
+           = $(\neg p \wedge \neg q) \vee (p \wedge \neg r) \vee q \vee r $ \par
+           = $(\neg p \wedge \neg q) \vee q \vee (p \wedge \neg r) \vee r$\par
+           = $((\neg p \vee q) \wedge (\neg q \vee q)) \vee ((p \vee r) \wedge (\neg r \vee r))$\par
+           = $((\neg p \vee q) \wedge 1) \vee ((p \vee r) \wedge 1)$\par
+           = $(\neg p \wedge 1) \vee (q \wedge 1) \vee (p \wedge 1) \vee (r \wedge 1)$\par
+           = $\neg p \vee q \vee p \vee r$\par
+           = $(\neg p \vee p) \vee (q \vee r)$ [$ because $  $(\neg P \vee P)$ = 1] \par
+           = 1 $\vee (q \vee r)$
+           = 1 	
+         
+        Therefore it's a tautology.\par
+        \begin{center}
+        Q.E.D
+        \end{center}
+
+\item   For the first four problems, enumerate the truth tables that
+        describe the relationships between the propositions.
+
+        \textbf{Soln-5.}  
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | }
+                \hline
+                \textbf{E} & \textbf{P} & \textbf{M} \\ [0.5 ex]
+                \hline 
+                F & F & F \\
+                \hline
+                F & T & T \\
+                \hline
+                T & F & T \\
+                \hline
+                T & T & T \\ [1ex]
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-1 (a)}
+                \label {table:1}
+        \end{table}
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | c | c | c | }
+                \hline
+                \textbf{G} & \textbf{H} & \textbf{L} & \textbf{P} & \textbf{W} & \textbf{$L \vee (W \leftrightarrow (P \wedge G \wedge H))$} \\ [0.5 ex]
+                \hline 
+                F & F & F & F & F & T \\
+                \hline
+                F & F & F & F & T & F \\
+                \hline
+                F & F & F & T & F & T \\
+                \hline
+                F & F & F & T & T & F \\
+                \hline
+                F & F & T & F & F & T \\
+                \hline
+                F & F & T & F & T & T \\
+                \hline
+                F & F & T & T & F & T \\
+                \hline
+                F & F & T & T & T & T \\
+                \hline
+                F & T & F & F & F & T \\
+                \hline
+                F & T & F & F & T & F \\
+                \hline
+                F & T & F & T & F & T \\
+                \hline
+                F & T & F & T & T & F \\
+                \hline
+                F & T & T & F & F & T \\
+                \hline
+                F & T & T & F & T & T \\
+                \hline
+                F & T & T & T & F & T \\
+                \hline
+                F & T & T & T & T & T \\
+                \hline
+                T & F & F & F & F & T \\
+                \hline
+                T & F & F & F & T & F \\
+                \hline
+                T & F & F & T & F & T \\
+                \hline
+                T & F & F & T & T & F \\
+                \hline
+                T & F & T & F & F & T \\
+                \hline
+                T & F & T & F & T & T \\
+                \hline
+                T & F & T & T & F & T \\
+                \hline
+                T & F & T & T & T & T \\
+                \hline
+                T & T & F & F & F & T \\
+                \hline
+                T & T & F & F & T & F \\
+                \hline
+                T & T & F & T & F & F \\
+                \hline
+                T & T & F & T & T & T \\
+                \hline
+                T & T & T & F & F & T \\
+                \hline
+                T & T & T & F & T & T \\
+                \hline
+                T & T & T & T & F & T \\
+                \hline
+                T & T & T & T & T & T \\ [1ex] 
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-1 (b)}
+                \label {table:2}
+        \end{table}
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | }
+                \hline
+                \textbf{Specification} & \textbf{Condition} & \textbf{Truth Value} \\ [0.5 ex]
+                \hline 
+                $ \neg L \rightarrow Q$ & $F \rightarrow T$ & T \\
+                \hline
+                $ \neg L \rightarrow N$ & $F \rightarrow F$ & T \\
+                \hline
+                $ \neg Q \rightarrow B$ & $F \rightarrow F$ & T \\
+                \hline
+                $ \neg L \rightarrow B$ & $F \rightarrow F$ & T \\
+                \hline
+                $ \neg B $ & T & T \\ [1ex]
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-2}
+                \label {table:3}
+        \end{table}
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | c | c | c | c | c | }
+                \hline
+                \textbf{p} & \textbf{q} & \textbf{$p \leftrightarrow q$} & \textbf{$p \wedge q$} & \textbf{$ \neg p$} & \textbf{$ \neg q$} & \textbf{$ \neg p \wedge \neg q$} & \textbf{$(p \wedge q) \vee (\neg p \wedge \neg q)$} \\ [0.5 ex]
+                \hline 
+                F & F & T & F & T & T & T & T \\
+                \hline
+                F & T & F & F & T & F & F & F \\
+                \hline
+                T & F & F & F & F & T & F & F \\
+                \hline
+                T & T & T & T & F & F & T & T \\ [1ex]
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-3}
+                \label {table:4}
+        \end{table}
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | c | c | c | c | c | }
+                \hline
+                \textbf{p} & \textbf{q} & \textbf{r} & \textbf{$((p \vee q) \wedge (\neg p \vee r)) \rightarrow (q \vee r)$} \\ [0.5 ex]
+                \hline 
+                F & F & F & T \\
+                \hline
+                F & F & T & T \\
+                \hline
+                F & T & F & T \\
+                \hline
+                F & T & T & T \\
+                \hline
+                T & F & F & T \\
+                \hline
+                T & F & T & T \\
+                \hline
+                T & T & F & T \\
+                \hline
+                T & T & T & T \\ [1ex]
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-4}
+                \label {table:5}
+        \end{table}
+
+\item   From proposition One: $(p \wedge q) \rightarrow p$, can you infer
+        proposition Two: $p \vee q$?  Can you prove this with a truth
+        table?  (Do not simply write a truth table, explain how the
+        truth table demonstrates the inference.
+
+        \textbf{Soln-6.}Given preposition One: $(p \wedge q) \rightarrow p$.
+                        We know from De Morgans’s law that $p \rightarrow q$ = $(\neg p \vee q)$ \par
+                        $(p \wedge q) \rightarrow p$ = $\neg (p \wedge q) \vee p$ \par
+                                     = $\neg p \vee q \vee p$ \par
+                                     = $(\neg p \vee p) \vee q$ [$ because $ $(\neg P \vee P)$ = 1] \par
+                                     = $1 \vee q$ \par
+                                     = 1 [Tautology] \par
+        With this given condition we can say that if $(p \wedge q)$ is true then p is true. 
+        Also, if p is true then $(p \vee q)$ will always be true. Therefore, we can infer $(p \vee q)$ from $(p \wedge q) \rightarrow p$.
+
+        \begin{table} [H]
+                \centering
+                \begin{tabular}{ | c | c | c | }
+                \hline
+                \textbf{p} & \textbf{q} & \textbf{$(p \wedge q) \rightarrow p$} \\ [0.5 ex]
+                \hline 
+                F & F & T \\
+                \hline
+                F & T & T \\
+                \hline
+                T & F & T \\
+                \hline
+                T & T & T \\ [1ex]
+                \hline
+                \end{tabular}
+                \caption{Truth table for Q-6}
+                \label {table:6}
+        \end{table}
+
+\item   Use propositional calculus to determine which person did which
+        exercise and what beverage they drank after their workout.
+        \par
+        {\sffamily After an invigorating workout, five fitness-conscious
+        friends know that nothing is more refreshing than a tall cool
+        glass of mineral water!  Each person (including Annie) has a
+        different, favorite form of daily exercise (one likes to
+        Rollerblade), and each drinks a different form brand of mineral
+        water (one is Crystal).  From the information provided,
+        determine the type of exercise and brand of water each person
+        prefers.
+        \begin{itemize}
+        \item   The friends are Annie, Ben, Meg, Page, and Tim.
+        \item   The exercises are: \textbf{A}erobics, \textbf{B}icycling,
+                \textbf{J}ogging, \textbf{R}ollerblading, and
+                \textbf{W}alking.
+        \item   The brands of water are Ocean, Crystal, Mountain,
+                Purity, and Creek.
+        \item   The one who bicycles in pursuit of fitness drinkes Ocean.
+        \item   Tim enjoys Aerobics every morning before work.
+                Ben is neither the one who drinks Creek nor the one who
+                imbibes Ocean.
+        \item   Page (who is neither the one who jogs nor the one who
+                walks to keep in shape) drinks Purity.
+        \item   Meg drinks Mountain but not after jogging.
+        \end{itemize}}
+
+        \textbf{Soln-7.} Given that each person has different form of exercises 
+                        and different forms of drinks. We consider following logical 
+                        expressions for each person, drink, and exercise: \par
+
+                        \textbf{A} = Annie, \textbf{B} = Ben, \textbf{M} = Meg, \textbf{P} = Page, \textbf{T} = Tim \par
+                        \textbf{Ae} = Aerobics, \textbf{Bi} = Bicycles, \textbf{Jo} = Jogging, \textbf{Wa} = Walk \par
+                        \textbf{Oc} = Ocean, \textbf{Cry} = Crystal, \textbf{Mo} = Mountain, \textbf{Pu} = Purity, \textbf{Cr} = Creek \par
+
+                        Given: \par
+                        1. $Bi \rightarrow Oc$ \par
+                        2. $T \rightarrow Ae$ \par
+                        3. $B \rightarrow \neg (Cr \wedge Oc)$ \par
+                        4. $P \rightarrow \neg (Jo \wedge Wa)$ \par
+                        5. $P \rightarrow Pu$ \par
+                        6. $M \rightarrow Mo$ \par
+                        7. $M \rightarrow ¬Jo$ \par
+                        If Annie drives bicycles then \par
+                        8.  $A \rightarrow Bi$	[Assuming] \par
+                        9.  $A \rightarrow Oc$	[8, 1 Hypothetical Syllogism] \par
+                        10. $P \rightarrow Ro$	[4 = Page Doesnt Jog and Walk, 8 = Annie rides Bicycle, 2 = Tim does Aerobics] \par
+                        11. $M \rightarrow Wa$	[7 = Meg Doesnt Jog, 8, 2, 10] \par
+                        12. $B \rightarrow Cry$	[3, 5, 6] \par
+                        13. $T \rightarrow Cr$	[5, 6, 9, 12] \par
+
+                        \begin{table} [H]
+                                \centering
+                                \begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | }
+                                \hline
+                                \textbf{Person} & \textbf{Ae} & \textbf{Bi} & \textbf{Jo} & \textbf{Ro} & \textbf{Wa} & \textbf{Oc} & \textbf{Cry} & \textbf{Mo} & \textbf{Pu} & \textbf{Cr} \\ [0.5 ex]
+                                \hline 
+                                Annie & F & T & F & F & F & T & F & F & F & F \\
+                                \hline
+                                Ben & F & F & T & F & F & F & T & F & F & F \\
+                                \hline
+                                Meg & F & F & F & F & T & F & F & T & F & F \\
+                                \hline
+                                Page & F & F & F & T & F & F & F & F & T & F \\ 
+                                \hline
+                                Tim & T & F & F & F & F & F & F & F & F & T \\ [1ex]
+                                \hline
+                                \end{tabular}
+                                \caption{Truth table for Q-7}
+                                \label {table:7}
+                        \end{table}
+
+\item    Read the journal \emph{Science} news article:
+        Write a paragraph summarizing the \emph{implications} of the
+        policy change.
+        \par
+        Write a second paragraph taking a stand for or against the
+        change and justify why it is good for science.
+
+        \textbf{Soln-8 a.} Public access policy announced by the US government states that US research agencies 
+                        should make the results of federally funded research free to read as soon as they are published. 
+                        This is a significant shift that will lift the 1 year subscription paywall and promote accessibility to 
+                        research results and will also improve people's trust in science. This implies that US taxpayers will 
+                        not have to pay to access results of the research funded by their tax money. On the other hand, the new policy 
+                        does not describe how the cost of production and editing these research papers will be funded. Thus, making publishing 
+                        more difficult for authors. Another implication is that without subscription revenues open-access business model will 
+                        require authors pay a fee to make their papers immediately available for free to the public. 
+
+        \textbf{Soln-8 b.} Free access to federally funded research and data is very important for accelerating discovery, 
+                        encouraging collaboration, and ensuring government accountability. The value of these research data can 
+                        be observed from the early days of COVID 19 pandemic. Researchers rapidly shared their data through a 
+                        wide variety of online resources which not only accelerated discovery but also allowed the translation 
+                        of research into prevention strategies, treatments, vaccines, and standards of care that ultimately saved 
+                        lives, despite the ongoing toll of the pandemic. Open access policy provides free flow of information that 
+                        will benifit underfunded groups of students and researchers who cannot pay high subscription cost. US taxpayers 
+                        fund billions of dollars of research every year in various fields of science. A portion of this 
+                        grant can be saved to pay the publication cost in pay-to-publish model. Open access policy can be a 
+                        big advancement moving forward, as in the long run it will make science data more accesible to public which 
+                        may induce trust in science and scientific procedure.
+
+\end{enumerate}
+\end{document}
