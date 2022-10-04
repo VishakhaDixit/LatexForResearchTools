@@ -78,7 +78,7 @@
                 \item 	If the file system is not locked, then new messages will be sent to the message buffer: $(\neg L \rightarrow B)$
                 \item   New messages will not be sent to the message buffer: $(\neg B)$
         \end{itemize}
-        To get consistency, then take N false in order that $(\neg N)$ be true. This require that both L and Q be true, 
+        To get consistency, take N false in order that $(\neg N)$ be true. This require that both L and Q be true, 
         by the two conditional statements that have N as their consequence. The first conditional statement $(\neg L \rightarrow Q)$ 
         is of the form $(F \rightarrow T)$, which is true. Finally, the $(\neg L \rightarrow B)$ can be satisfied by taking B to be false.
         Therefore, this set of specifications is consistent.
@@ -91,7 +91,7 @@
         \textbf{Soln-3.}\par
         L.H.S. = $p \leftrightarrow q$\par
            = $(p \rightarrow q) \wedge (q \rightarrow p)$\par
-           = $(p \vee \neg q) \wedge (q \vee \neg p)$\par
+           = $(p \vee \neg q) \wedge (q \vee \neg p)$ [$ because $  $(p \rightarrow q)$ = $(p \vee \neg q)$] \par
            = $((p \vee \neg q) \wedge q) \vee ((p \vee \neg q) \wedge \neg p)$\par
            = $((p \wedge q) \vee (\neg q \wedge q)) \vee ((p \wedge \neg p) \vee (\neg q \wedge \neg p))$ [$ because $  $(\neg Q \wedge Q)$ = 0] \par		
            = $(p \wedge q) \vee (\neg p \wedge \neg q)$\par
@@ -287,7 +287,7 @@
         table?  (Do not simply write a truth table, explain how the
         truth table demonstrates the inference.
 
-        \textbf{Soln-6.}Given preposition One: $(p \wedge q) \rightarrow p$.
+        \textbf{Soln-6.}Given preposition One: $(p \wedge q) \rightarrow p$. \par
                         We know from De Morgans’s law that $p \rightarrow q$ = $(\neg p \vee q)$ \par
                         $(p \wedge q) \rightarrow p$ = $\neg (p \wedge q) \vee p$ \par
                                      = $\neg p \vee q \vee p$ \par
@@ -373,15 +373,15 @@
                                 \hline
                                 \textbf{Person} & \textbf{Ae} & \textbf{Bi} & \textbf{Jo} & \textbf{Ro} & \textbf{Wa} & \textbf{Oc} & \textbf{Cry} & \textbf{Mo} & \textbf{Pu} & \textbf{Cr} \\ [0.5 ex]
                                 \hline 
-                                Annie & F & T & F & F & F & T & F & F & F & F \\
+                                Annie & F & \textbf{T} & F & F & F & \textbf{T} & F & F & F & F \\
                                 \hline
-                                Ben & F & F & T & F & F & F & T & F & F & F \\
+                                Ben & F & F & \textbf{T} & F & F & F & \textbf{T} & F & F & F \\
                                 \hline
-                                Meg & F & F & F & F & T & F & F & T & F & F \\
+                                Meg & F & F & F & F & \textbf{T} & F & F & \textbf{T} & F & F \\
                                 \hline
-                                Page & F & F & F & T & F & F & F & F & T & F \\ 
+                                Page & F & F & F & \textbf{T} & F & F & F & F & \textbf{T} & F \\ 
                                 \hline
-                                Tim & T & F & F & F & F & F & F & F & F & T \\ [1ex]
+                                Tim & \textbf{T} & F & F & F & F & F & F & F & F & \textbf{T} \\ [1ex]
                                 \hline
                                 \end{tabular}
                                 \caption{Truth table for Q-7}
