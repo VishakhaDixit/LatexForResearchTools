@@ -12,7 +12,7 @@
 \date{Fall 2022}
 \maketitle
 
-\section*{Problems}
+\section*{Solutions}
 \begin{enumerate}
 \item   Translate the following English passages into propositions
         and logical connectors.
@@ -34,7 +34,7 @@
         \end{itemize}
         Prepositional logic for the above sentence can be written as follows using logical connectors: 
         \begin{center}
-       $((e \vee p) \rightarrow m)$
+       $m \rightarrow (e \vee p)$
         \end{center}
 
         \textbf{Soln-1 b.} Considering following prepositions, 
@@ -127,17 +127,25 @@
         \textbf{Soln-5.}  
         \begin{table} [H]
                 \centering
-                \begin{tabular}{ | c | c | c | }
+                \begin{tabular}{ | c | c | c | c | }
                 \hline
-                \textbf{E} & \textbf{P} & \textbf{M} \\ [0.5 ex]
+                \textbf{E} & \textbf{M} & \textbf{P} & \textbf{$m \rightarrow (e \vee p)$} \\ [0.5 ex]
                 \hline 
-                F & F & F \\
+                F & F & F & T \\
                 \hline
-                F & T & T \\
+                F & F & T & T \\
                 \hline
-                T & F & T \\
+                F & T & F & F \\
                 \hline
-                T & T & T \\ [1ex]
+                F & T & T & T \\ 
+                \hline
+                T & F & F & T \\
+                \hline
+                T & F & T & T \\
+                \hline
+                T & T & F & T \\
+                \hline
+                T & T & T & T \\ [1ex]
                 \hline
                 \end{tabular}
                 \caption{Truth table for Q-1 (a)}
@@ -358,7 +366,7 @@
                         4. $P \rightarrow \neg (Jo \wedge Wa)$ \par
                         5. $P \rightarrow Pu$ \par
                         6. $M \rightarrow Mo$ \par
-                        7. $M \rightarrow ¬Jo$ \par
+                        7. $M \rightarrow \neg Jo$ \par
                         If Annie drives bicycles then \par
                         8.  $A \rightarrow Bi$	[Assuming] \par
                         9.  $A \rightarrow Oc$	[8, 1 Hypothetical Syllogism] \par
@@ -384,7 +392,7 @@
                                 Tim & \textbf{T} & F & F & F & F & F & F & F & F & \textbf{T} \\ [1ex]
                                 \hline
                                 \end{tabular}
-                                \caption{Truth table for Q-7}
+                                \caption{Table for Q-7}
                                 \label {table:7}
                         \end{table}
 
